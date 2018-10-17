@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,10 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.whiteboardfall2018serverjava.models.User;
 
 @RestController
+@CrossOrigin(origins="*")
 public class UserService {
 	
 	List<User> users = new ArrayList<User>();
 	
+	@GetMapping("/api/user")
+	public List<User> findAllUsers() {
+		return users;
+	}
+
 	@PostMapping("/api/user")
 	public List<User> createUser(@RequestBody User user) {
 		users.add(user);
