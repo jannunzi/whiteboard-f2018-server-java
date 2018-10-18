@@ -10,6 +10,21 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private List<Course> courses = new ArrayList<Course>();
+
+	public User() {}
+	public User(String username) {
+		this.username = username;
+	}
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+	public User(String firstName, String lastName, String username, String password) {
+		this(username, password);
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
 	public List<Course> getCourses() {
 		return courses;
 	}

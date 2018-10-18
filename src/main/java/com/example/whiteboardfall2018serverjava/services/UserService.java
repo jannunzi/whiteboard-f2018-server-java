@@ -18,6 +18,12 @@ import com.example.whiteboardfall2018serverjava.models.User;
 public class UserService {
 	
 	static List<User> users = new ArrayList<User>();
+	static String[] usernames = {"alice", "bob", "charlie"};
+	{
+		for(String username: usernames) {
+			users.add(new User(username));
+		}
+	}
 	
 	@GetMapping("/api/user")
 	public List<User> findAllUsers() {
