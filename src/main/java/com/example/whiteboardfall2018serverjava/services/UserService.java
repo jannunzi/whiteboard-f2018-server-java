@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.whiteboardfall2018serverjava.models.Course;
 import com.example.whiteboardfall2018serverjava.models.User;
 
 @RestController
@@ -19,9 +20,19 @@ public class UserService {
 	
 	static List<User> users = new ArrayList<User>();
 	static String[] usernames = {"alice", "bob", "charlie"};
+	static String[] courseTitles = {"cs5200", "cs5610", "cs5500"};
 	{
+		List<Course> courses = new ArrayList<Course>();
+		for(String courseTitle: courseTitles) {
+			Course course = new Course(courseTitle);
+			courses.add(course);
+		}
 		for(String username: usernames) {
-			users.add(new User(username));
+			User user = new User(username);
+			if(username.equals("alice")) {
+				user.setCourses(courses);
+			}
+			users.add(user);
 		}
 	}
 	
