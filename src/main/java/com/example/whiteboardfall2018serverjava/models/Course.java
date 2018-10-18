@@ -1,7 +1,7 @@
 package com.example.whiteboardfall2018serverjava.models;
 
 public class Course {
-	  private int id;
+	  private int id = (int)(Math.random() * Integer.MAX_VALUE);
 	  private String title;
 	public Course(int i, String string) {
 		id = i; title = string;

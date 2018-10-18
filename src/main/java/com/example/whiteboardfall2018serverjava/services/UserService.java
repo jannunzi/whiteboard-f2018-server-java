@@ -17,11 +17,19 @@ import com.example.whiteboardfall2018serverjava.models.User;
 @CrossOrigin(origins="*")
 public class UserService {
 	
-	List<User> users = new ArrayList<User>();
+	static List<User> users = new ArrayList<User>();
 	
 	@GetMapping("/api/user")
 	public List<User> findAllUsers() {
 		return users;
+	}
+
+	public User findUserById(int userId) {
+		for(User user: users) {
+			if(user.getId() == userId)
+				return user;
+		}
+		return null;
 	}
 
 	@PostMapping("/api/user")

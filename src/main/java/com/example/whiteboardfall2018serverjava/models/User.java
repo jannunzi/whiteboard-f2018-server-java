@@ -4,17 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+	private int id = (int)(Math.random() * Integer.MAX_VALUE);
 	private String username;
 	private String password;
 	private String firstName;
 	private String lastName;
-
 	private List<Course> courses = new ArrayList<Course>();
 	public List<Course> getCourses() {
 		return courses;
 	}
 	public void setCourses(List<Course> courses) {
 		this.courses = courses;
+	}
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getUsername() {
