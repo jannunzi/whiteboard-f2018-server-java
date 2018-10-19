@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.whiteboardfall2018serverjava.models.Course;
+import com.example.whiteboardfall2018serverjava.models.Lesson;
 import com.example.whiteboardfall2018serverjava.models.Module;
 import com.example.whiteboardfall2018serverjava.models.User;
 
@@ -23,10 +24,18 @@ public class UserService {
 	static String[] usernames    = {"alice", "bob", "charlie"};
 	static String[] courseTitles = {"cs5200", "cs5610", "cs5500"};
 	static String[] moduleTitles = {"Module 1", "Module 2"};
+	static String[] lessonTitles = {"lesson 1", "lesson 2"};
 	{
+		List<Lesson> lessons = new ArrayList<Lesson>();
+		for(String lessonTitle : lessonTitles) {
+			lessons.add(new Lesson(lessonTitle));
+		}
 		List<Module> modules = new ArrayList<Module>();
 		for(String moduleTitle: moduleTitles) {
 			Module module = new Module(moduleTitle);
+			if(moduleTitle.equals("Module 1")) {
+				module.setLessons(lessons);
+			}
 			modules.add(module);
 		}
 		List<Course> courses = new ArrayList<Course>();
