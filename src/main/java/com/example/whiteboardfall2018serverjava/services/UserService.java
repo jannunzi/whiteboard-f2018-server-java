@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.whiteboardfall2018serverjava.models.Course;
+import com.example.whiteboardfall2018serverjava.models.Module;
 import com.example.whiteboardfall2018serverjava.models.User;
 
 @RestController
@@ -19,12 +20,21 @@ import com.example.whiteboardfall2018serverjava.models.User;
 public class UserService {
 	
 	static List<User> users = new ArrayList<User>();
-	static String[] usernames = {"alice", "bob", "charlie"};
+	static String[] usernames    = {"alice", "bob", "charlie"};
 	static String[] courseTitles = {"cs5200", "cs5610", "cs5500"};
+	static String[] moduleTitles = {"Module 1", "Module 2"};
 	{
+		List<Module> modules = new ArrayList<Module>();
+		for(String moduleTitle: moduleTitles) {
+			Module module = new Module(moduleTitle);
+			modules.add(module);
+		}
 		List<Course> courses = new ArrayList<Course>();
 		for(String courseTitle: courseTitles) {
 			Course course = new Course(courseTitle);
+			if(courseTitle.equals("cs5200")) {
+				course.setModules(modules);
+			}
 			courses.add(course);
 		}
 		for(String username: usernames) {

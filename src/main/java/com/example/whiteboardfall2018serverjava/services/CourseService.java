@@ -35,4 +35,16 @@ public class CourseService {
 		user.getCourses().add(course);
 		return user.getCourses();
 	}
+
+	public Course findCourseById(int courseId) {
+		List<User> users = userService.findAllUsers();
+		for(User user: users) {
+			List<Course> courses = user.getCourses();
+			for(Course course: courses) {
+				if(course.getId() == courseId)
+					return course;
+			}
+		}
+		return null;
+	}
 }
