@@ -16,6 +16,7 @@ import com.example.whiteboardfall2018serverjava.models.Lesson;
 import com.example.whiteboardfall2018serverjava.models.Module;
 import com.example.whiteboardfall2018serverjava.models.Topic;
 import com.example.whiteboardfall2018serverjava.models.User;
+import com.example.whiteboardfall2018serverjava.models.Widget;
 
 @RestController
 @CrossOrigin(origins="*")
@@ -27,10 +28,19 @@ public class UserService {
 	static String[] moduleTitles = {"Module 1", "Module 2"};
 	static String[] lessonTitles = {"lesson 1", "lesson 2"};
 	static String[] topicTitles = {"topic 1", "topic 2"};
+	static String[] widgetTitles = {"widget 1", "widget 2"};
 	{
+		List<Widget> widgets = new ArrayList<Widget>();
+		for(String widgetTitle : widgetTitles) {
+			widgets.add(new Widget(widgetTitle));
+		}
 		List<Topic> topics = new ArrayList<Topic>();
 		for(String topicTitle : topicTitles) {
-			topics.add(new Topic(topicTitle));
+			Topic topic = new Topic(topicTitle);
+			if(topicTitle.equals("topic 1")) {
+				topic.setWidgets(widgets);
+			}
+			topics.add(topic);
 		}
 		List<Lesson> lessons = new ArrayList<Lesson>();
 		for(String lessonTitle : lessonTitles) {

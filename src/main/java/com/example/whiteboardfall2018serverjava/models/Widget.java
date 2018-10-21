@@ -1,20 +1,10 @@
 package com.example.whiteboardfall2018serverjava.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Topic {
+public class Widget {
 	private int id = (int)(Math.random() * Integer.MAX_VALUE);
 	private String title;
-	private List<Widget> widgets = new ArrayList<Widget>();
-	public List<Widget> getWidgets() {
-		return widgets;
-	}
-	public void setWidgets(List<Widget> widgets) {
-		this.widgets = widgets;
-	}
-	public Topic() {}
-	public Topic(String title) {
+	public Widget() {}
+	public Widget(String title) {
 		this.title = title;
 	}
 	public int getId() {
