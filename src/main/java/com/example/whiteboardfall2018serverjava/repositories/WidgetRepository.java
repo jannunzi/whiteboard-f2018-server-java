@@ -8,3 +8,4 @@ public interface WidgetRepository
 	extends CrudRepository<Widget, Integer>{
 
 }
+

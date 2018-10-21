@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Widget {
 	@Id
@@ -13,6 +15,7 @@ public class Widget {
 	private int id;
 	private String title;
 	@ManyToOne()
+	@JsonIgnore
 	private Topic topic;
 	public Topic getTopic() {
 		return topic;
