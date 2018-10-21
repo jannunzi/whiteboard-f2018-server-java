@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Topic {
-	private int id = (int)(Math.random() * Integer.MAX_VALUE);
+	private int id = User.autoIncrement++;
 	private String title;
 	private List<Widget> widgets = new ArrayList<Widget>();
 	public List<Widget> getWidgets() {

@@ -1,7 +1,7 @@
 package com.example.whiteboardfall2018serverjava.models;
 
 public class Widget {
-	private int id = (int)(Math.random() * Integer.MAX_VALUE);
+	private int id = User.autoIncrement++;
 	private String title;
 	public Widget() {}
 	public Widget(String title) {
