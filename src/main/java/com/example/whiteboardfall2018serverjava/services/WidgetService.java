@@ -14,6 +14,7 @@ import com.example.whiteboardfall2018serverjava.models.Module;
 import com.example.whiteboardfall2018serverjava.models.Topic;
 import com.example.whiteboardfall2018serverjava.models.User;
 import com.example.whiteboardfall2018serverjava.models.Widget;
+import com.example.whiteboardfall2018serverjava.repositories.TopicRepository;
 import com.example.whiteboardfall2018serverjava.repositories.WidgetRepository;
 
 @RestController
@@ -23,6 +24,15 @@ public class WidgetService {
 	UserService userService;
 	@Autowired
 	WidgetRepository widgetRepository;
+	@Autowired
+	TopicRepository topicRepository;
+	@GetMapping("/api/topic/{topicId}/widget")
+	public List<Widget> findWidgetsForTopic(
+			@PathVariable("topicId") int topicId) {
+		return (List<Widget>)
+				topicRepository.findById(topicId)
+				.get().getWidgets();
+	}
 	@GetMapping("/api/widget")
 	public List<Widget> findAllWidgets() {
 		return (List<Widget>) widgetRepository.findAll();
