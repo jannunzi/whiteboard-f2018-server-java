@@ -1,6 +1,14 @@
 package com.example.whiteboardfall2018serverjava.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Widget {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id = User.autoIncrement++;
 	private String title;
 	public Widget() {}
