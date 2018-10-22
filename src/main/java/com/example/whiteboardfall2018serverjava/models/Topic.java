@@ -7,7 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Topic {
@@ -15,6 +18,15 @@ public class Topic {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String title;
+	@ManyToOne
+	@JsonIgnore
+	private Lesson lesson;
+	public Lesson getLesson() {
+		return lesson;
+	}
+	public void setLesson(Lesson lesson) {
+		this.lesson = lesson;
+	}
 	@OneToMany(mappedBy="topic")
 	private List<Widget> widgets = new ArrayList<Widget>();
 	public List<Widget> getWidgets() {

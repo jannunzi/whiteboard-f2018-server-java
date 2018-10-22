@@ -12,12 +12,19 @@ import com.example.whiteboardfall2018serverjava.models.Course;
 import com.example.whiteboardfall2018serverjava.models.Lesson;
 import com.example.whiteboardfall2018serverjava.models.Module;
 import com.example.whiteboardfall2018serverjava.models.User;
+import com.example.whiteboardfall2018serverjava.repositories.LessonRepository;
 
 @RestController
 @CrossOrigin(origins="*")
 public class LessonService {
 	@Autowired
 	UserService userService;
+	@Autowired
+	LessonRepository lessonRepository;
+	@GetMapping("/api/lesson")
+	public List<Lesson> findAllLessons() {
+		return (List<Lesson>) lessonRepository.findAll();
+	}
 	@GetMapping("/api/user/{userId}/course/{courseId}/module/{moduleId}/lesson")
 	public List<Lesson> findLessonsForCourseId(
 			@PathVariable("userId") int userId,

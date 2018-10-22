@@ -13,6 +13,7 @@ import com.example.whiteboardfall2018serverjava.models.Lesson;
 import com.example.whiteboardfall2018serverjava.models.Module;
 import com.example.whiteboardfall2018serverjava.models.Topic;
 import com.example.whiteboardfall2018serverjava.models.User;
+import com.example.whiteboardfall2018serverjava.repositories.LessonRepository;
 import com.example.whiteboardfall2018serverjava.repositories.TopicRepository;
 
 @RestController
@@ -22,6 +23,12 @@ public class TopicService {
 	UserService userService;
 	@Autowired
 	TopicRepository topicRepository;
+	@Autowired
+	LessonRepository lessonRepository;
+	@GetMapping("/api/lesson/{lessonId}/topic")
+	public List<Topic> findTopicsForLesson(@PathVariable("lessonId") int lessonId) {
+		return (List<Topic>) lessonRepository.findById(lessonId).get().getTopics();
+	}
 	@GetMapping("/api/topic")
 	public List<Topic> findAllTopics() {
 		return (List<Topic>) topicRepository.findAll();
