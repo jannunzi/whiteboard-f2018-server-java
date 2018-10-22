@@ -26,6 +26,7 @@ public class ListWidgetService {
 	public List<Widget> createListWidget(
 			@PathVariable("topicId") int topicId,
 			@RequestBody ListWidget listWidget) {
+		listWidget.setWidgetType("LIST");
 		Topic topic = topicRepository.findById(topicId).get();
 		listWidget.setTopic(topic);
 		listWidget = listWidgetRepository.save(listWidget);

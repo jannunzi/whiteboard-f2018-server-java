@@ -26,6 +26,7 @@ public class YouTubeWidgetService {
 	public List<Widget> createYouTubeWidget(
 			@PathVariable("topicId") int topicId,
 			@RequestBody YouTubeWidget youTubeWidget) {
+		youTubeWidget.setWidgetType("YOU_TUBE");
 		Topic topic = topicRepository.findById(topicId).get();
 		youTubeWidget.setTopic(topic);
 		youTubeWidget = youTubeWidgetRepository.save(youTubeWidget);
